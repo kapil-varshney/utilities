@@ -57,7 +57,7 @@ model.compile(loss='categorical_crossentropy',
              optimizer='adam',
              metrics=['accuracy'])
 
-tensorboard = TensorBoard(log_dir='logs/{}'.format(time))
+tensorboard = TensorBoard(log_dir='logs/{}'.format(time()))
 
 #Train the model using callback to the TrainingPlot class object
 model.fit(x_train, y_train_cat,
