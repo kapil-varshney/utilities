@@ -1,4 +1,4 @@
-#import the required libraries
+# import the required libraries
 import keras
 import numpy as np
 from keras.datasets import cifar10
@@ -52,14 +52,15 @@ model.add(Activation('softmax'))
 
 model.summary()
 
-#Compile the model
+# Compile the model
 model.compile(loss='categorical_crossentropy',
              optimizer='adam',
              metrics=['accuracy'])
 
+# Create a TensorBoard instance with the path to the logs directory
 tensorboard = TensorBoard(log_dir='logs/{}'.format(time()))
 
-#Train the model using callback to the TrainingPlot class object
+#Train the model using tensorboard instance in the callbacks
 model.fit(x_train, y_train_cat,
          epochs=25,
          validation_data=(x_test, y_test_cat),
