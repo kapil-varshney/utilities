@@ -8,6 +8,10 @@ from keras.layers import Dense, Flatten, Dropout, Activation
 from keras.layers import Conv2D, MaxPooling2D
 from trainingplot import TrainingPlot
 
+# Provide the output path and name for the plot
+filename = 'output/training_plot.jpg'
+
+# Create an instance of the TrainingPlot class with the filename.
 plot_losses = TrainingPlot()
 
 # Find the number of classes

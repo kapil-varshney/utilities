@@ -1,12 +1,13 @@
 import matplotlib
-# Specifying the backend to be used before importing pyplot
-# to avoid "RuntimeError: Invalid DISPLAY variable"
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import keras
 import numpy as np
 
 class TrainingPlot(keras.callbacks.Callback):
+
+    def __init__(self, filename='output/training_plot.jpg'):
+        self.filename = filename
 
     # This function is called when the training begins
     def on_train_begin(self, logs={}):
@@ -34,7 +35,7 @@ class TrainingPlot(keras.callbacks.Callback):
 
             # You can chose the style of your preference
             # print(plt.style.available) to see the available options
-            #plt.style.use("seaborn")
+            plt.style.use("seaborn")
 
             # Plot train loss, train acc, val loss and val acc against epochs passed
             plt.figure()
@@ -48,5 +49,5 @@ class TrainingPlot(keras.callbacks.Callback):
             plt.legend()
             # Make sure there exists a folder called output in the current directory
             # or replace 'output' with whatever direcory you want to put in the plots
-            plt.savefig('output/Epoch-{}.png'.format(epoch))
+            plt.savefig(self.filename)
             plt.close()
